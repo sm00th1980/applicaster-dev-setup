@@ -263,7 +263,7 @@ export const platformTemplates: PlatformTemplates = {
         {
           name: "Native Setup",
           commands: [
-            "cd ${HOME}/projects/applicaster/tvos/ZappAppleBuilder/ZappiOS/",
+            "cd ${HOME}/projects/applicaster/tvos/ZappAppleBuilder/ZappTvOS/",
             "git reset --hard HEAD && git clean -xfd",
             "zapptool -vi <APP_ID> -rn localhost:8081 -pu",
           ],
