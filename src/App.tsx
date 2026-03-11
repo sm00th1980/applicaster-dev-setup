@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Badge from "react-bootstrap/Badge";
+import InputGroup from "react-bootstrap/InputGroup";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   platformTemplates,
@@ -278,40 +279,36 @@ function App() {
                           )}
                         </Button>
                       </div>
-                      <div className="bg-light p-3 rounded">
-                        {group.commands.map((command, lineIndex) => (
-                          <div
-                            key={lineIndex}
-                            className="d-flex justify-content-between align-items-start py-1 border-bottom border-light"
-                          >
-                            <code className="text-dark">{command}</code>
-                            <Button
-                              variant="link"
-                              size="sm"
-                              className="text-decoration-none"
-                              onClick={() =>
-                                handleCopyLine(
-                                  template.id,
-                                  command,
-                                  lineIndex,
-                                  groupIndex,
-                                )
-                              }
-                            >
-                              {isCopied(
-                                "line",
-                                template.id,
-                                groupIndex,
-                                lineIndex,
-                              ) ? (
-                                <Badge bg="success">Copied!</Badge>
-                              ) : (
-                                <Badge bg="secondary">Copy</Badge>
-                              )}
-                            </Button>
-                          </div>
-                        ))}
-                      </div>
+
+                      {group.commands.map((command, lineIndex) => (
+                        <>
+                          <InputGroup className="mb-3">
+                            <Form.Control readOnly value={command} />
+                            {isCopied(
+                              "line",
+                              template.id,
+                              groupIndex,
+                              lineIndex,
+                            ) ? (
+                              <Button variant="success">Copied!</Button>
+                            ) : (
+                              <Button
+                                variant="info"
+                                onClick={() =>
+                                  handleCopyLine(
+                                    template.id,
+                                    command,
+                                    lineIndex,
+                                    groupIndex,
+                                  )
+                                }
+                              >
+                                Copy
+                              </Button>
+                            )}
+                          </InputGroup>
+                        </>
+                      ))}
                     </div>
                   ))}
                 </Card.Body>
