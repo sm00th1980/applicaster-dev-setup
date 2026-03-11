@@ -113,9 +113,14 @@ function App() {
   }, []);
 
   const handleCopyLine = useCallback(
-    async (platformId: string, command: string, lineIndex: number) => {
+    async (
+      platformId: string,
+      command: string,
+      lineIndex: number,
+      groupIndex: number,
+    ) => {
       await copyToClipboard(command);
-      setCopiedState({ type: "line", platformId, lineIndex });
+      setCopiedState({ type: "line", platformId, lineIndex, groupIndex });
       setTimeout(() => setCopiedState(null), 2000);
     },
     [copyToClipboard],
@@ -147,7 +152,15 @@ function App() {
     if (type === "group") {
       return copiedState.groupIndex === groupIndex;
     }
-    return copiedState.lineIndex === lineIndex;
+
+    if (type === "line") {
+      return (
+        copiedState.groupIndex === groupIndex &&
+        copiedState.lineIndex === lineIndex
+      );
+    }
+
+    return false;
   };
 
   const filteredTemplates = generatedTemplates.filter((t) =>
@@ -277,7 +290,12 @@ function App() {
                               size="sm"
                               className="text-decoration-none"
                               onClick={() =>
-                                handleCopyLine(template.id, command, lineIndex)
+                                handleCopyLine(
+                                  template.id,
+                                  command,
+                                  lineIndex,
+                                  groupIndex,
+                                )
                               }
                             >
                               {isCopied(
