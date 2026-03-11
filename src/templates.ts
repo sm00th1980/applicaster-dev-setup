@@ -90,6 +90,7 @@ export const platformTemplates: PlatformTemplates = {
           commands: [
             "cd ${HOME}/projects/applicaster/tvos/QuickBrick",
             "git reset --hard HEAD && git clean -xfd",
+            "git checkout main",
             "yarn && yarn add react-native@npm:react-native-tvos@0.77.2-1 && yarn zapplicaster prepare -a -b <APP_ID>",
             '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/sm00th1980/applicaster-dev/HEAD/tvos/v15/setup.sh)"',
           ],
@@ -99,6 +100,7 @@ export const platformTemplates: PlatformTemplates = {
           commands: [
             "cd ${HOME}/projects/applicaster/tvos/ZappAppleBuilder/ZappTvOS/",
             "git reset --hard HEAD && git clean -xfd",
+            "git checkout master",
             "zapptool -vi <APP_ID> -rn localhost:8081 -pu",
           ],
         },
@@ -256,6 +258,7 @@ export const platformTemplates: PlatformTemplates = {
           commands: [
             "cd ${HOME}/projects/applicaster/tvos/QuickBrick",
             "git reset --hard HEAD && git clean -xfd",
+            "git checkout release/version-14",
             "yarn && yarn add react-native@npm:react-native-tvos@0.77.2-1 && yarn zapplicaster prepare -a -b <APP_ID>",
             '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/sm00th1980/applicaster-dev/HEAD/tvos/v14/setup.sh)"',
           ],
@@ -265,6 +268,7 @@ export const platformTemplates: PlatformTemplates = {
           commands: [
             "cd ${HOME}/projects/applicaster/tvos/ZappAppleBuilder/ZappTvOS/",
             "git reset --hard HEAD && git clean -xfd",
+            "git checkout release-10.0.0",
             "zapptool -vi <APP_ID> -rn localhost:8081 -pu",
           ],
         },
