@@ -163,9 +163,9 @@ function App() {
     <Container className="py-4">
       <Row className="mb-4">
         <Col>
-          <h1 className="text-center">Applicaster Preparation Generator</h1>
+          <h1 className="text-center">Applicaster Dev Setup</h1>
           <p className="text-center text-muted">
-            Generate terminal commands for personal macOS workflows
+            Generate terminal commands for setup QuickBrick projects
           </p>
         </Col>
       </Row>
