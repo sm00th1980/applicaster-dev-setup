@@ -39,7 +39,7 @@ export const platformTemplates: PlatformTemplates = {
       name: "iOS",
       groups: [
         {
-          name: "JS Setup",
+          name: "QuickBrick setup",
           commands: [
             "cd ${HOME}/projects/applicaster/ios/QuickBrick",
             "git reset --hard HEAD && git clean -xfd",
@@ -48,7 +48,7 @@ export const platformTemplates: PlatformTemplates = {
           ],
         },
         {
-          name: "Native Setup",
+          name: "Native setup",
           commands: [
             "cd ${HOME}/projects/applicaster/ios/ZappAppleBuilder/ZappiOS/",
             "git reset --hard HEAD && git clean -xfd",
@@ -62,7 +62,7 @@ export const platformTemplates: PlatformTemplates = {
       name: "Android",
       groups: [
         {
-          name: "JS Setup",
+          name: "QuickBrick setup",
           commands: [
             "cd ${HOME}/projects/applicaster/android/QuickBrick",
             "git reset --hard HEAD && git clean -xfd",
@@ -71,7 +71,7 @@ export const platformTemplates: PlatformTemplates = {
           ],
         },
         {
-          name: "Native Setup",
+          name: "Native setup",
           commands: [
             "cd ${HOME}/projects/applicaster/android/ZappAndroidBuilder",
             "git reset --hard HEAD && git clean -xfd",
@@ -86,7 +86,7 @@ export const platformTemplates: PlatformTemplates = {
       name: "tvOS",
       groups: [
         {
-          name: "JS Setup",
+          name: "QuickBrick setup",
           commands: [
             "cd ${HOME}/projects/applicaster/tvos/QuickBrick",
             "git reset --hard HEAD && git clean -xfd",
@@ -96,7 +96,7 @@ export const platformTemplates: PlatformTemplates = {
           ],
         },
         {
-          name: "Native Setup",
+          name: "Native setup",
           commands: [
             "cd ${HOME}/projects/applicaster/tvos/ZappAppleBuilder/ZappTvOS/",
             "git reset --hard HEAD && git clean -xfd",
@@ -111,7 +111,7 @@ export const platformTemplates: PlatformTemplates = {
       name: "AndroidTV",
       groups: [
         {
-          name: "JS Setup",
+          name: "QuickBrick setup",
           commands: [
             "cd ${HOME}/projects/applicaster/androidtv/QuickBrick",
             "git reset --hard HEAD && git clean -xfd",
@@ -120,7 +120,7 @@ export const platformTemplates: PlatformTemplates = {
           ],
         },
         {
-          name: "Native Setup",
+          name: "Native setup",
           commands: [
             "cd ${HOME}/projects/applicaster/androidtv/ZappAndroidBuilder",
             "git reset --hard HEAD && git clean -xfd",
@@ -135,7 +135,7 @@ export const platformTemplates: PlatformTemplates = {
       name: "FireTV",
       groups: [
         {
-          name: "JS Setup",
+          name: "QuickBrick setup",
           commands: [
             "cd ${HOME}/projects/applicaster/firetv/QuickBrick",
             "git reset --hard HEAD && git clean -xfd",
@@ -144,7 +144,7 @@ export const platformTemplates: PlatformTemplates = {
           ],
         },
         {
-          name: "Native Setup",
+          name: "Native setup",
           commands: [
             "cd ${HOME}/projects/applicaster/firetv/ZappAndroidBuilder",
             "git reset --hard HEAD && git clean -xfd",
@@ -159,20 +159,12 @@ export const platformTemplates: PlatformTemplates = {
       name: "Samsung TV (Tizen OS)",
       groups: [
         {
-          name: "JS Setup",
+          name: "QuickBrick setup",
           commands: [
             "cd ${HOME}/projects/applicaster/samsung/QuickBrick",
             "git reset --hard HEAD && git clean -xfd",
             "yarn && yarn zapplicaster prepare -a <APP_ID>",
-            '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/sm00th1980/applicaster-dev/HEAD/samsung/v15/setup.sh)"',
-          ],
-        },
-        {
-          name: "Native Setup",
-          commands: [
-            "cd ${HOME}/projects/applicaster/samsung/ZappTizenBuilder",
-            "git reset --hard HEAD && git clean -xfd",
-            "./build.sh <APP_ID>",
+            "yarn start:web",
           ],
         },
       ],
@@ -182,20 +174,12 @@ export const platformTemplates: PlatformTemplates = {
       name: "LG TV (WebOS)",
       groups: [
         {
-          name: "JS Setup",
+          name: "QuickBrick setup",
           commands: [
             "cd ${HOME}/projects/applicaster/lg/QuickBrick",
             "git reset --hard HEAD && git clean -xfd",
             "yarn && yarn zapplicaster prepare -a <APP_ID>",
-            '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/sm00th1980/applicaster-dev/HEAD/lg/v15/setup.sh)"',
-          ],
-        },
-        {
-          name: "Native Setup",
-          commands: [
-            "cd ${HOME}/projects/applicaster/lg/ZappWebOSBuilder",
-            "git reset --hard HEAD && git clean -xfd",
-            "./build.sh <APP_ID>",
+            "yarn start:web",
           ],
         },
       ],
@@ -207,7 +191,7 @@ export const platformTemplates: PlatformTemplates = {
       name: "iOS",
       groups: [
         {
-          name: "JS Setup",
+          name: "QuickBrick setup",
           commands: [
             "cd ${HOME}/projects/applicaster/ios/QuickBrick",
             "git reset --hard HEAD && git clean -xfd",
@@ -216,7 +200,7 @@ export const platformTemplates: PlatformTemplates = {
           ],
         },
         {
-          name: "Native Setup",
+          name: "Native setup",
           commands: [
             "cd ${HOME}/projects/applicaster/ios/ZappAppleBuilder/ZappiOS/",
             "git reset --hard HEAD && git clean -xfd",
@@ -230,7 +214,7 @@ export const platformTemplates: PlatformTemplates = {
       name: "Android",
       groups: [
         {
-          name: "JS Setup",
+          name: "QuickBrick setup",
           commands: [
             "cd ${HOME}/projects/applicaster/android/QuickBrick",
             "git reset --hard HEAD && git clean -xfd",
@@ -239,7 +223,7 @@ export const platformTemplates: PlatformTemplates = {
           ],
         },
         {
-          name: "Native Setup",
+          name: "Native setup",
           commands: [
             "cd ${HOME}/projects/applicaster/android/ZappAndroidBuilder",
             "git reset --hard HEAD && git clean -xfd",
@@ -254,7 +238,7 @@ export const platformTemplates: PlatformTemplates = {
       name: "tvOS",
       groups: [
         {
-          name: "JS Setup",
+          name: "QuickBrick setup",
           commands: [
             "cd ${HOME}/projects/applicaster/tvos/QuickBrick",
             "git reset --hard HEAD && git clean -xfd",
@@ -264,7 +248,7 @@ export const platformTemplates: PlatformTemplates = {
           ],
         },
         {
-          name: "Native Setup",
+          name: "Native setup",
           commands: [
             "cd ${HOME}/projects/applicaster/tvos/ZappAppleBuilder/ZappTvOS/",
             "git reset --hard HEAD && git clean -xfd",
@@ -279,7 +263,7 @@ export const platformTemplates: PlatformTemplates = {
       name: "AndroidTV",
       groups: [
         {
-          name: "JS Setup",
+          name: "QuickBrick setup",
           commands: [
             "cd ${HOME}/projects/applicaster/androidtv/QuickBrick",
             "git reset --hard HEAD && git clean -xfd",
@@ -288,7 +272,7 @@ export const platformTemplates: PlatformTemplates = {
           ],
         },
         {
-          name: "Native Setup",
+          name: "Native setup",
           commands: [
             "cd ${HOME}/projects/applicaster/androidtv/ZappAndroidBuilder",
             "git reset --hard HEAD && git clean -xfd",
@@ -303,7 +287,7 @@ export const platformTemplates: PlatformTemplates = {
       name: "FireTV",
       groups: [
         {
-          name: "JS Setup",
+          name: "QuickBrick setup",
           commands: [
             "cd ${HOME}/projects/applicaster/firetv/QuickBrick",
             "git reset --hard HEAD && git clean -xfd",
@@ -312,7 +296,7 @@ export const platformTemplates: PlatformTemplates = {
           ],
         },
         {
-          name: "Native Setup",
+          name: "Native setup",
           commands: [
             "cd ${HOME}/projects/applicaster/firetv/ZappAndroidBuilder",
             "git reset --hard HEAD && git clean -xfd",
@@ -327,20 +311,12 @@ export const platformTemplates: PlatformTemplates = {
       name: "Samsung TV (Tizen OS)",
       groups: [
         {
-          name: "JS Setup",
+          name: "QuickBrick setup",
           commands: [
             "cd ${HOME}/projects/applicaster/samsung/QuickBrick",
             "git reset --hard HEAD && git clean -xfd",
             "yarn && yarn zapplicaster prepare -a <APP_ID>",
-            '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/sm00th1980/applicaster-dev/HEAD/samsung/v14/setup.sh)"',
-          ],
-        },
-        {
-          name: "Native Setup",
-          commands: [
-            "cd ${HOME}/projects/applicaster/samsung/ZappTizenBuilder",
-            "git reset --hard HEAD && git clean -xfd",
-            "./build.sh <APP_ID>",
+            "yarn start:web",
           ],
         },
       ],
@@ -350,20 +326,12 @@ export const platformTemplates: PlatformTemplates = {
       name: "LG TV (WebOS)",
       groups: [
         {
-          name: "JS Setup",
+          name: "QuickBrick setup",
           commands: [
             "cd ${HOME}/projects/applicaster/lg/QuickBrick",
             "git reset --hard HEAD && git clean -xfd",
             "yarn && yarn zapplicaster prepare -a <APP_ID>",
-            '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/sm00th1980/applicaster-dev/HEAD/lg/v14/setup.sh)"',
-          ],
-        },
-        {
-          name: "Native Setup",
-          commands: [
-            "cd ${HOME}/projects/applicaster/lg/ZappWebOSBuilder",
-            "git reset --hard HEAD && git clean -xfd",
-            "./build.sh <APP_ID>",
+            "yarn start:web",
           ],
         },
       ],
