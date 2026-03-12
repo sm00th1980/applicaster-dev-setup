@@ -12,7 +12,7 @@ import {
   platformTemplates,
   generateCommands,
   type PlatformTemplate,
-  type FrameworkVersion,
+  type QuickBrickVersion,
 } from "./templates";
 
 const uuidSchema = z.string().uuid();
@@ -34,7 +34,7 @@ function App() {
     new Set(PLATFORM_ORDER),
   );
   const [selectedVersion, setSelectedVersion] =
-    useState<FrameworkVersion>("v15");
+    useState<QuickBrickVersion>("v15");
   const [generatedTemplates, setGeneratedTemplates] = useState<
     PlatformTemplate[]
   >([]);
@@ -202,11 +202,11 @@ function App() {
         </Col>
         <Col md={6}>
           <Form.Group>
-            <Form.Label>Framework Version</Form.Label>
+            <Form.Label>QuickBrick Version</Form.Label>
             <Form.Select
               value={selectedVersion}
               onChange={(e) =>
-                setSelectedVersion(e.target.value as FrameworkVersion)
+                setSelectedVersion(e.target.value as QuickBrickVersion)
               }
             >
               <option value="v15">v15</option>

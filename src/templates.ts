@@ -11,9 +11,9 @@ export type PlatformTemplate = {
   groups: CommandGroup[];
 };
 
-export type FrameworkVersion = "v15" | "v14";
+export type QuickBrickVersion = "v15" | "v14";
 
-export type PlatformTemplates = Record<FrameworkVersion, PlatformTemplate[]>;
+export type PlatformTemplates = Record<QuickBrickVersion, PlatformTemplate[]>;
 
 function generateCommandLine(line: string, appId: string): string {
   return line.replaceAll("<APP_ID>", appId);
