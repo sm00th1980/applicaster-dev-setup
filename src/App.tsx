@@ -232,7 +232,9 @@ function App() {
                 <Card.Header>
                   <Row>
                     <Col md={12} className="d-flex justify-content-between">
-                      <h4 className="mb-0">{group.name}</h4>
+                      <div className="d-flex align-items-center">
+                        <h6 className="mb-0">{group.name}</h6>
+                      </div>
 
                       {isCopied("group", chosenTemplate.id, groupIndex) ? (
                         <Button variant="outline-secondary" size="sm">
