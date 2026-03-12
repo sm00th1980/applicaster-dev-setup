@@ -228,34 +228,26 @@ function App() {
             {filteredTemplates.map((template) => (
               <Card key={template.id} className="mb-4">
                 <Card.Header>
-                  <h4 className="mb-0">{template.name}</h4>
+                  <Row>
+                    <Col md={12} className="d-flex justify-content-between">
+                      <h4 className="mb-0">{template.name}</h4>
+
+                      <Button
+                        variant="outline-secondary"
+                        size="sm"
+                        onClick={() => {
+                          console.log({ template });
+                        }}
+                      >
+                        {"Copy All 1111"}
+                      </Button>
+                    </Col>
+                  </Row>
                 </Card.Header>
+
                 <Card.Body>
                   {template.groups.map((group, groupIndex) => (
                     <div key={group.name} className="mb-4">
-                      <div className="d-flex justify-content-between align-items-center mb-2">
-                        <h5 className="mb-0">{group.name}</h5>
-                        <Button
-                          variant="outline-secondary"
-                          size="sm"
-                          onClick={() =>
-                            handleCopyGroup(
-                              template.id,
-                              group.commands,
-                              groupIndex,
-                            )
-                          }
-                        >
-                          {isCopied("group", template.id, groupIndex) ? (
-                            <>
-                              <span className="text-success">✓ Copied!</span>
-                            </>
-                          ) : (
-                            "Copy All"
-                          )}
-                        </Button>
-                      </div>
-
                       {group.commands.map((command, lineIndex) => (
                         <>
                           <InputGroup className="mb-3">
