@@ -153,14 +153,9 @@ function App() {
     return false;
   };
 
-  const filteredTemplates = generatedTemplates.filter(
+  const chosenTemplate = generatedTemplates.filter(
     (t) => selectedPlatform === t.id,
-  );
-
-  // Sort templates according to PLATFORM_ORDER
-  filteredTemplates.sort(
-    (a, b) => PLATFORM_ORDER.indexOf(a.id) - PLATFORM_ORDER.indexOf(b.id),
-  );
+  )[0];
 
   return (
     <Container className="py-4">
@@ -200,7 +195,9 @@ function App() {
               }}
             >
               {PLATFORM_ORDER.map((platformId) => (
-                <option value={platformId}>{platformId}</option>
+                <option value={platformId} key={platformId}>
+                  {platformId}
+                </option>
               ))}
             </Form.Select>
           </Form.Group>
@@ -214,85 +211,90 @@ function App() {
                 setSelectedVersion(e.target.value as QuickBrickVersion)
               }
             >
-              <option value="v15">v15</option>
-              <option value="v14">v14</option>
+              <option value="v15" key="v15">
+                v15
+              </option>
+              <option value="v14" key="v14">
+                v14
+              </option>
             </Form.Select>
           </Form.Group>
         </Col>
       </Row>
 
       {/* Generated Commands */}
-      {filteredTemplates.length > 0 && !appIdError && (
-        <Row>
-          <Col>
-            {filteredTemplates.map((template) => (
-              <Card key={template.id} className="mb-4">
+      {chosenTemplate &&
+        !appIdError &&
+        chosenTemplate.groups.map((group, groupIndex) => (
+          <Row key={groupIndex}>
+            <Col>
+              <Card key={groupIndex} className="mb-4">
                 <Card.Header>
-                  <h4 className="mb-0">{template.name}</h4>
-                </Card.Header>
-                <Card.Body>
-                  {template.groups.map((group, groupIndex) => (
-                    <div key={group.name} className="mb-4">
-                      <div className="d-flex justify-content-between align-items-center mb-2">
-                        <h5 className="mb-0">{group.name}</h5>
+                  <Row>
+                    <Col md={12} className="d-flex justify-content-between">
+                      <h4 className="mb-0">{group.name}</h4>
+
+                      {isCopied("group", chosenTemplate.id, groupIndex) ? (
+                        <Button variant="outline-secondary" size="sm">
+                          Copied as group!
+                        </Button>
+                      ) : (
                         <Button
                           variant="outline-secondary"
                           size="sm"
                           onClick={() =>
                             handleCopyGroup(
-                              template.id,
+                              chosenTemplate.id,
                               group.commands,
                               groupIndex,
                             )
                           }
                         >
-                          {isCopied("group", template.id, groupIndex) ? (
-                            <>
-                              <span className="text-success">✓ Copied!</span>
-                            </>
-                          ) : (
-                            "Copy All"
-                          )}
+                          Copy as group
                         </Button>
-                      </div>
+                      )}
+                    </Col>
+                  </Row>
+                </Card.Header>
 
-                      {group.commands.map((command, lineIndex) => (
-                        <>
-                          <InputGroup className="mb-3">
-                            <Form.Control readOnly value={command} />
-                            {isCopied(
-                              "line",
-                              template.id,
-                              groupIndex,
-                              lineIndex,
-                            ) ? (
-                              <Button variant="success">Copied!</Button>
-                            ) : (
-                              <Button
-                                variant="info"
-                                onClick={() =>
-                                  handleCopyLine(
-                                    template.id,
-                                    command,
-                                    lineIndex,
-                                    groupIndex,
-                                  )
-                                }
-                              >
-                                Copy
-                              </Button>
-                            )}
-                          </InputGroup>
-                        </>
-                      ))}
-                    </div>
-                  ))}
+                <Card.Body>
+                  <div key={groupIndex} className="mb-4">
+                    {group.commands.map((command, lineIndex) => (
+                      <InputGroup className="mb-3" key={lineIndex}>
+                        <Form.Control readOnly value={command} />
+                        {isCopied(
+                          "line",
+                          chosenTemplate.id,
+                          groupIndex,
+                          lineIndex,
+                        ) ? (
+                          <Button variant="outline-success" size="sm">
+                            Copied!
+                          </Button>
+                        ) : (
+                          <Button
+                            variant="outline-success"
+                            size="sm"
+                            onClick={() =>
+                              handleCopyLine(
+                                chosenTemplate.id,
+                                command,
+                                lineIndex,
+                                groupIndex,
+                              )
+                            }
+                          >
+                            Copy
+                          </Button>
+                        )}
+                      </InputGroup>
+                    ))}
+                  </div>
                 </Card.Body>
               </Card>
-            ))}
-          </Col>
-        </Row>
-      )}
+            </Col>
+          </Row>
+        ))}
 
       {/* Empty state when no APP_ID or invalid */}
       {(!appId || appIdError) && (
