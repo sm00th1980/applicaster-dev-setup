@@ -91,7 +91,6 @@ export const platformTemplates: PlatformTemplates = {
           commands: [
             "cd ${HOME}/projects/applicaster/tvos/QuickBrick",
             "git reset --hard HEAD && git clean -xfd",
-            "git checkout main",
             "yarn && yarn add react-native@npm:react-native-tvos@0.77.2-1 && yarn zapplicaster prepare -a -b <APP_ID>",
             '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/sm00th1980/applicaster-dev/HEAD/tvos/v15/setup.sh)"',
           ],
