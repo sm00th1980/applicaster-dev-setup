@@ -27,6 +27,8 @@ const PLATFORM_ORDER = [
   "lg",
 ];
 
+const isLast = (index: number, length: number) => index + 1 >= length;
+
 function App() {
   const [appId, setAppId] = useState<string>("");
   const [appIdError, setAppIdError] = useState<string>("");
@@ -260,9 +262,14 @@ function App() {
                 </Card.Header>
 
                 <Card.Body>
-                  <div key={groupIndex} className="mb-4">
+                  <div key={groupIndex} className="">
                     {group.commands.map((command, lineIndex) => (
-                      <InputGroup className="mb-3" key={lineIndex}>
+                      <InputGroup
+                        className={
+                          isLast(lineIndex, group.commands.length) ? "" : "mb-3"
+                        }
+                        key={lineIndex}
+                      >
                         <Form.Control readOnly value={command} />
                         {isCopied(
                           "line",
