@@ -153,14 +153,9 @@ function App() {
     return false;
   };
 
-  const filteredTemplates = generatedTemplates.filter(
+  const chosenTemplate = generatedTemplates.filter(
     (t) => selectedPlatform === t.id,
-  );
-
-  // Sort templates according to PLATFORM_ORDER
-  filteredTemplates.sort(
-    (a, b) => PLATFORM_ORDER.indexOf(a.id) - PLATFORM_ORDER.indexOf(b.id),
-  );
+  )[0];
 
   return (
     <Container className="py-4">
@@ -200,7 +195,9 @@ function App() {
               }}
             >
               {PLATFORM_ORDER.map((platformId) => (
-                <option value={platformId}>{platformId}</option>
+                <option value={platformId} key={platformId}>
+                  {platformId}
+                </option>
               ))}
             </Form.Select>
           </Form.Group>
@@ -214,74 +211,74 @@ function App() {
                 setSelectedVersion(e.target.value as QuickBrickVersion)
               }
             >
-              <option value="v15">v15</option>
-              <option value="v14">v14</option>
+              <option value="v15" key="v15">
+                v15
+              </option>
+              <option value="v14" key="v14">
+                v14
+              </option>
             </Form.Select>
           </Form.Group>
         </Col>
       </Row>
 
       {/* Generated Commands */}
-      {filteredTemplates.length > 0 && !appIdError && (
+      {chosenTemplate && !appIdError && (
         <Row>
           <Col>
-            {filteredTemplates.map((template) => (
-              <Card key={template.id} className="mb-4">
-                <Card.Header>
-                  <Row>
-                    <Col md={12} className="d-flex justify-content-between">
-                      <h4 className="mb-0">{template.name}</h4>
+            <Card key={chosenTemplate.id} className="mb-4">
+              <Card.Header>
+                <Row>
+                  <Col md={12} className="d-flex justify-content-between">
+                    <h4 className="mb-0">{chosenTemplate.name}</h4>
 
-                      <Button
-                        variant="outline-secondary"
-                        size="sm"
-                        onClick={() => {
-                          console.log({ template });
-                        }}
-                      >
-                        {"Copy All 1111"}
-                      </Button>
-                    </Col>
-                  </Row>
-                </Card.Header>
+                    <Button
+                      variant="outline-secondary"
+                      size="sm"
+                      onClick={() => {
+                        console.log({ chosenTemplate });
+                      }}
+                    >
+                      {"Copy All 1111"}
+                    </Button>
+                  </Col>
+                </Row>
+              </Card.Header>
 
-                <Card.Body>
-                  {template.groups.map((group, groupIndex) => (
-                    <div key={group.name} className="mb-4">
-                      {group.commands.map((command, lineIndex) => (
-                        <>
-                          <InputGroup className="mb-3">
-                            <Form.Control readOnly value={command} />
-                            {isCopied(
-                              "line",
-                              template.id,
-                              groupIndex,
-                              lineIndex,
-                            ) ? (
-                              <Button variant="success">Copied!</Button>
-                            ) : (
-                              <Button
-                                variant="info"
-                                onClick={() =>
-                                  handleCopyLine(
-                                    template.id,
-                                    command,
-                                    lineIndex,
-                                    groupIndex,
-                                  )
-                                }
-                              >
-                                Copy
-                              </Button>
-                            )}
-                          </InputGroup>
-                        </>
-                      ))}
-                    </div>
-                  ))}
-                </Card.Body>
-              </Card>
-            ))}
+              <Card.Body>
+                {chosenTemplate.groups.map((group, groupIndex) => (
+                  <div key={group.name} className="mb-4">
+                    {group.commands.map((command, lineIndex) => (
+                      <InputGroup className="mb-3" key={lineIndex}>
+                        <Form.Control readOnly value={command} />
+                        {isCopied(
+                          "line",
+                          chosenTemplate.id,
+                          groupIndex,
+                          lineIndex,
+                        ) ? (
+                          <Button variant="success">Copied!</Button>
+                        ) : (
+                          <Button
+                            variant="info"
+                            onClick={() =>
+                              handleCopyLine(
+                                chosenTemplate.id,
+                                command,
+                                lineIndex,
+                                groupIndex,
+                              )
+                            }
+                          >
+                            Copy
+                          </Button>
+                        )}
+                      </InputGroup>
+                    ))}
+                  </div>
+                ))}
+              </Card.Body>
+            </Card>
           </Col>
         </Row>
       )}
