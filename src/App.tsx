@@ -30,9 +30,11 @@ const PLATFORM_ORDER = [
 function App() {
   const [appId, setAppId] = useState<string>("");
   const [appIdError, setAppIdError] = useState<string>("");
-  const [selectedPlatforms, setSelectedPlatforms] = useState<Set<string>>(
-    new Set(PLATFORM_ORDER),
+
+  const [selectedPlatform, setSelectedPlatform] = useState<string>(
+    PLATFORM_ORDER[0],
   );
+
   const [selectedVersion, setSelectedVersion] =
     useState<QuickBrickVersion>("v15");
   const [generatedTemplates, setGeneratedTemplates] = useState<
@@ -90,18 +92,6 @@ function App() {
     const value = e.target.value;
     setAppId(value);
     validateAppId(value);
-  };
-
-  const togglePlatform = (platformId: string) => {
-    setSelectedPlatforms((prev) => {
-      const next = new Set(prev);
-      if (next.has(platformId)) {
-        next.delete(platformId);
-      } else {
-        next.add(platformId);
-      }
-      return next;
-    });
   };
 
   const copyToClipboard = useCallback(async (text: string) => {
@@ -163,8 +153,8 @@ function App() {
     return false;
   };
 
-  const filteredTemplates = generatedTemplates.filter((t) =>
-    selectedPlatforms.has(t.id),
+  const filteredTemplates = generatedTemplates.filter(
+    (t) => selectedPlatform === t.id,
   );
 
   // Sort templates according to PLATFORM_ORDER
@@ -185,7 +175,7 @@ function App() {
 
       {/* Input Section */}
       <Row className="mb-4">
-        <Col md={6}>
+        <Col md={4}>
           <Form.Group>
             <Form.Label>APP_ID (UUID)</Form.Label>
             <Form.Control
@@ -200,7 +190,22 @@ function App() {
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
-        <Col md={6}>
+        <Col md={4}>
+          <Form.Group>
+            <Form.Label>Platform</Form.Label>
+            <Form.Select
+              value={selectedPlatform}
+              onChange={(e) => {
+                setSelectedPlatform(e.target.value);
+              }}
+            >
+              {PLATFORM_ORDER.map((platformId) => (
+                <option value={platformId}>{platformId}</option>
+              ))}
+            </Form.Select>
+          </Form.Group>
+        </Col>
+        <Col md={4}>
           <Form.Group>
             <Form.Label>QuickBrick Version</Form.Label>
             <Form.Select
@@ -213,34 +218,6 @@ function App() {
               <option value="v14">v14</option>
             </Form.Select>
           </Form.Group>
-        </Col>
-      </Row>
-
-      {/* Platform Selection */}
-      <Row className="mb-4">
-        <Col>
-          <Form.Label>Select Platforms</Form.Label>
-          <div className="d-flex flex-wrap gap-2">
-            {PLATFORM_ORDER.map((platformId) => {
-              const template = platformTemplates[selectedVersion].find(
-                (t) => t.id === platformId,
-              );
-              return (
-                <Button
-                  key={platformId}
-                  variant={
-                    selectedPlatforms.has(platformId)
-                      ? "primary"
-                      : "outline-primary"
-                  }
-                  size="sm"
-                  onClick={() => togglePlatform(platformId)}
-                >
-                  {template?.name || platformId}
-                </Button>
-              );
-            })}
-          </div>
         </Col>
       </Row>
 
