@@ -45,6 +45,7 @@ export const platformTemplates: PlatformTemplates = {
             "git reset --hard HEAD && git clean -xfd",
             "yarn && yarn zapplicaster prepare -a <APP_ID>",
             '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/sm00th1980/applicaster-dev/HEAD/ios/v15/setup.sh)"',
+            "yarn start",
           ],
         },
         {
@@ -68,6 +69,7 @@ export const platformTemplates: PlatformTemplates = {
             "git reset --hard HEAD && git clean -xfd",
             "yarn && yarn zapplicaster prepare -a <APP_ID>",
             '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/sm00th1980/applicaster-dev/HEAD/android_tv/setup.sh)"',
+            "yarn start",
           ],
         },
         {
@@ -196,6 +198,7 @@ export const platformTemplates: PlatformTemplates = {
             "git reset --hard HEAD && git clean -xfd",
             "yarn && yarn zapplicaster prepare -a <APP_ID>",
             '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/sm00th1980/applicaster-dev/HEAD/ios/v14/setup.sh)"',
+            "yarn start",
           ],
         },
         {
@@ -219,6 +222,7 @@ export const platformTemplates: PlatformTemplates = {
             "git reset --hard HEAD && git clean -xfd",
             "yarn && yarn zapplicaster prepare -a <APP_ID>",
             '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/sm00th1980/applicaster-dev/HEAD/android_tv/setup.sh)"',
+            "yarn start",
           ],
         },
         {
