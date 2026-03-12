@@ -223,31 +223,42 @@ function App() {
       </Row>
 
       {/* Generated Commands */}
-      {chosenTemplate && !appIdError && (
-        <Row>
-          <Col>
-            <Card key={chosenTemplate.id} className="mb-4">
-              <Card.Header>
-                <Row>
-                  <Col md={12} className="d-flex justify-content-between">
-                    <h4 className="mb-0">{chosenTemplate.name}</h4>
+      {chosenTemplate &&
+        !appIdError &&
+        chosenTemplate.groups.map((group, groupIndex) => (
+          <Row key={groupIndex}>
+            <Col>
+              <Card key={groupIndex} className="mb-4">
+                <Card.Header>
+                  <Row>
+                    <Col md={12} className="d-flex justify-content-between">
+                      <h4 className="mb-0">{group.name}</h4>
 
-                    <Button
-                      variant="outline-secondary"
-                      size="sm"
-                      onClick={() => {
-                        console.log({ chosenTemplate });
-                      }}
-                    >
-                      {"Copy All 1111"}
-                    </Button>
-                  </Col>
-                </Row>
-              </Card.Header>
+                      {isCopied("group", chosenTemplate.id, groupIndex) ? (
+                        <Button variant="outline-secondary" size="sm">
+                          Copied as group!
+                        </Button>
+                      ) : (
+                        <Button
+                          variant="outline-secondary"
+                          size="sm"
+                          onClick={() =>
+                            handleCopyGroup(
+                              chosenTemplate.id,
+                              group.commands,
+                              groupIndex,
+                            )
+                          }
+                        >
+                          Copy as group
+                        </Button>
+                      )}
+                    </Col>
+                  </Row>
+                </Card.Header>
 
-              <Card.Body>
-                {chosenTemplate.groups.map((group, groupIndex) => (
-                  <div key={group.name} className="mb-4">
+                <Card.Body>
+                  <div key={groupIndex} className="mb-4">
                     {group.commands.map((command, lineIndex) => (
                       <InputGroup className="mb-3" key={lineIndex}>
                         <Form.Control readOnly value={command} />
@@ -257,10 +268,13 @@ function App() {
                           groupIndex,
                           lineIndex,
                         ) ? (
-                          <Button variant="success">Copied!</Button>
+                          <Button variant="outline-success" size="sm">
+                            Copied!
+                          </Button>
                         ) : (
                           <Button
-                            variant="info"
+                            variant="outline-success"
+                            size="sm"
                             onClick={() =>
                               handleCopyLine(
                                 chosenTemplate.id,
@@ -276,12 +290,11 @@ function App() {
                       </InputGroup>
                     ))}
                   </div>
-                ))}
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      )}
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        ))}
 
       {/* Empty state when no APP_ID or invalid */}
       {(!appId || appIdError) && (
