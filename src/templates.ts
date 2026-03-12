@@ -66,7 +66,6 @@ export const platformTemplates: PlatformTemplates = {
           commands: [
             "cd ${HOME}/projects/applicaster/android/QuickBrick",
             "git reset --hard HEAD && git clean -xfd",
-            "git checkout main",
             " yarn && yarn zapplicaster prepare -a <APP_ID>",
             '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/sm00th1980/applicaster-dev/HEAD/android_tv/setup.sh)"',
           ],
@@ -218,7 +217,6 @@ export const platformTemplates: PlatformTemplates = {
           commands: [
             "cd ${HOME}/projects/applicaster/android/QuickBrick",
             "git reset --hard HEAD && git clean -xfd",
-            "git checkout main",
             " yarn && yarn zapplicaster prepare -a <APP_ID>",
             '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/sm00th1980/applicaster-dev/HEAD/android_tv/setup.sh)"',
           ],
