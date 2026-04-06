@@ -69,7 +69,7 @@ export const v15 = [
           "cd ${HOME}/projects/applicaster/tvos/ZappAppleBuilder/ZappTvOS/",
           "git reset --hard HEAD && git clean -xfd",
           "git checkout master",
-          "zapptool -vi <APP_ID> -rn localhost:8081 -pu",
+          "rvm use ruby-3.4.1 && zapptool -vi <APP_ID> -rn localhost:8081 -pu",
         ],
       },
     ],
