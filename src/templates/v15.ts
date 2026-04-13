@@ -34,7 +34,7 @@ export const v15 = [
           "cd ${HOME}/projects/applicaster/android/QuickBrick",
           "git reset --hard HEAD && git clean -xfd",
           "yarn && yarn zapplicaster prepare -a <APP_ID>",
-          '/bin/bash -c "$(curl -fsSL https://applicaster-dev-setup.vercel.app/setup/android_tv/setup.sh)"',
+          '/bin/bash -c "$(curl -fsSL https://applicaster-dev-setup.vercel.app/setup/androidtv/setup.sh)"',
           "yarn start",
         ],
       },
