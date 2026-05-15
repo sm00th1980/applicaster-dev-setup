@@ -38,7 +38,7 @@ function App() {
   );
 
   const [selectedVersion, setSelectedVersion] =
-    useState<QuickBrickVersion>("v15");
+    useState<QuickBrickVersion>("v16");
   const [generatedTemplates, setGeneratedTemplates] = useState<
     PlatformTemplate[]
   >([]);
