@@ -214,10 +214,10 @@ function App() {
               }
             >
               <option value="v16" key="v16">
-                v16
+                v16 (current main branch)
               </option>
               <option value="v15" key="v15">
-                v15.1(based on v14)
+                v15.1 (based on v14)
               </option>
               <option value="v14" key="v14">
                 v14
