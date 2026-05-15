@@ -18,7 +18,7 @@ export const v15 = [
         commands: [
           "cd ${HOME}/projects/applicaster/ios/ZappAppleBuilder/ZappiOS/",
           "git reset --hard HEAD && git clean -xfd",
-          "git checkout master",
+          "git checkout release-10.0.0",
           "rvm use 3.4.1 && zapptool -vi <APP_ID> -rn localhost:8081 -pu",
         ],
       },
@@ -68,7 +68,7 @@ export const v15 = [
         commands: [
           "cd ${HOME}/projects/applicaster/tvos/ZappAppleBuilder/ZappTvOS/",
           "git reset --hard HEAD && git clean -xfd",
-          "git checkout master",
+          "git checkout release-10.0.0",
           "rvm use 3.4.1 && zapptool -vi <APP_ID> -rn localhost:8081 -pu",
         ],
       },
