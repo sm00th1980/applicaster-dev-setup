@@ -38,7 +38,7 @@ echo "✅ Added LogBox ignore code to top of $FILE_FOR_DISABLE_POPUPS"
 
 # Activate debugger - START
 
-FILE_FOR_ACTIVATE_DEBUGGER="./packages/zapp-react-native-tvos-app/InteractionManager/index.ts"
+FILE_FOR_ACTIVATE_DEBUGGER="./packages/zapp-react-native-tvos-app/InteractionManager/index.tsx"
 
 if [ -z "$FILE_FOR_ACTIVATE_DEBUGGER" ]; then
   echo "❌ Please provide a file path."
