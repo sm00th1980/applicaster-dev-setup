@@ -213,8 +213,11 @@ function App() {
                 setSelectedVersion(e.target.value as QuickBrickVersion)
               }
             >
+              <option value="v16" key="v16">
+                v16
+              </option>
               <option value="v15" key="v15">
-                v15
+                v15.1
               </option>
               <option value="v14" key="v14">
                 v14
