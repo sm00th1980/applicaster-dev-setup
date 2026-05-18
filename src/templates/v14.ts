@@ -47,6 +47,13 @@ export const v14 = [
           "rvm use 2.7.8-perf && bundle update --bundler && bundle exec rake prepare_workspace VERSION=<APP_ID>",
         ],
       },
+      {
+        name: "Deploy",
+        commands: [
+          "cd ${HOME}/projects/applicaster/android/zapp-platform-android",
+          "adb reverse tcp:8081 tcp:8081 && ./gradlew installMobileGoogleDebug -PREACT_NATIVE_PACKAGER_ROOT=192.168.2.241:8081",
+        ],
+      },
     ],
   },
   {
@@ -97,6 +104,13 @@ export const v14 = [
           "rvm use 2.7.8-perf && bundle update --bundler && bundle exec rake prepare_workspace VERSION=<APP_ID>",
         ],
       },
+      {
+        name: "Deploy",
+        commands: [
+          "cd ${HOME}/projects/applicaster/androidtv/zapp-platform-android",
+          "adb reverse tcp:8081 tcp:8081 && ./gradlew installTvGoogleDebug -PREACT_NATIVE_PACKAGER_ROOT=192.168.2.241:8081",
+        ],
+      },
     ],
   },
   {
@@ -120,6 +134,13 @@ export const v14 = [
           "git reset --hard HEAD && git clean -xfd",
           "git checkout master",
           "rvm use 2.7.8-perf && bundle update --bundler && bundle exec rake prepare_workspace VERSION=<APP_ID>",
+        ],
+      },
+      {
+        name: "Deploy",
+        commands: [
+          "cd ${HOME}/projects/applicaster/firetv/zapp-platform-android",
+          "adb reverse tcp:8081 tcp:8081 && ./gradlew installTvAmazonDebug -PREACT_NATIVE_PACKAGER_ROOT=192.168.2.241:8081",
         ],
       },
     ],
