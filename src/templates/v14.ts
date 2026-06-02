@@ -123,6 +123,7 @@ export const v14 = [
           "yarn build:ts && yarn build:android_tv && yarn build:hermes:android",
           "cp ./android/main.hbc ../zapp-platform-android/app/src/tvGoogle/assets",
           "cd ~/projects/applicaster/androidtv/zapp-platform-android",
+          '/bin/bash -c "$(curl -fsSL https://applicaster-dev-setup.vercel.app/setup/androidtv/patch-release-signing-debug.sh)"',
           "./gradlew assembleRelease",
           "adb connect 192.168.2.213 && adb -s 192.168.2.213:5555 install ./app/build/outputs/apk/tvGoogle/release/app-tv-google-release.apk",
         ],
