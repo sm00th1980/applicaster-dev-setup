@@ -6,10 +6,12 @@
 # with:
 #   signingConfig signingConfigs.debug
 #
+# If already in the desired state, exits 0 without modifying the file.
+#
 # Usage:
-#   ./scripts/patch-release-signing-debug.sh
-#   ./scripts/patch-release-signing-debug.sh /path/to/app/build.gradle
-#   ./scripts/patch-release-signing-debug.sh --restore
+#   ./patch-release-signing-debug.sh
+#   ./patch-release-signing-debug.sh /path/to/app/build.gradle
+#   ./patch-release-signing-debug.sh --restore
 
 set -euo pipefail
 
@@ -17,8 +19,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "${SCRIPT_DIR}" && pwd)"
 DEFAULT_BUILD_GRADLE="${PROJECT_ROOT}/app/build.gradle"
 
-FROM='signingConfig signingConfigs.release'
-TO='signingConfig signingConfigs.debug'
+RELEASE_SIGNING='signingConfig signingConfigs.release'
+DEBUG_SIGNING='signingConfig signingConfigs.debug'
 
 usage() {
   cat <<EOF
@@ -30,6 +32,19 @@ Options:
 
 Default BUILD_GRADLE: ${DEFAULT_BUILD_GRADLE}
 EOF
+}
+
+get_release_signing_line() {
+  awk '
+    /buildTypes[[:space:]]*\{/ { in_build_types = 1 }
+    in_build_types && /^[[:space:]]*release[[:space:]]*\{/ { in_release = 1 }
+    in_release && /signingConfig signingConfigs\./ {
+      gsub(/^[[:space:]]+|[[:space:]]+$/, "")
+      print
+      exit
+    }
+    in_release && /^[[:space:]]*\}/ { in_release = 0 }
+  ' "$1"
 }
 
 restore=false
@@ -65,8 +80,25 @@ if [[ ! -f "$build_gradle" ]]; then
 fi
 
 if [[ "$restore" == true ]]; then
-  FROM='signingConfig signingConfigs.debug'
-  TO='signingConfig signingConfigs.release'
+  FROM="$DEBUG_SIGNING"
+  TO="$RELEASE_SIGNING"
+  ALREADY_MSG="Already using release signing in buildTypes/release"
+else
+  FROM="$RELEASE_SIGNING"
+  TO="$DEBUG_SIGNING"
+  ALREADY_MSG="Already patched: release uses signingConfigs.debug"
+fi
+
+current="$(get_release_signing_line "$build_gradle")"
+
+if [[ "$current" == "$TO" ]]; then
+  echo "$ALREADY_MSG"
+  exit 0
+fi
+
+if [[ "$current" != "$FROM" ]]; then
+  echo "Error: expected '${FROM}' in buildTypes/release, found: ${current:-<none>}" >&2
+  exit 1
 fi
 
 tmp="$(mktemp)"
@@ -75,18 +107,9 @@ trap 'rm -f "$tmp"' EXIT
 awk -v from="$FROM" -v to="$TO" '
   /buildTypes[[:space:]]*\{/ { in_build_types = 1 }
   in_build_types && /^[[:space:]]*release[[:space:]]*\{/ { in_release = 1 }
-  in_release && index($0, from) {
-    sub(from, to)
-    changed = 1
-  }
+  in_release && index($0, from) { sub(from, to) }
   in_release && /^[[:space:]]*\}/ { in_release = 0 }
   { print }
-  END {
-    if (!changed) {
-      print "patch-release-signing-debug: no change in release buildType (already patched or pattern missing)" > "/dev/stderr"
-      exit 2
-    }
-  }
 ' "$build_gradle" > "$tmp"
 
 mv "$tmp" "$build_gradle"
