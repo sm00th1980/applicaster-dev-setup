@@ -115,6 +115,18 @@ export const v14 = [
           "adb -s emulator-5554 reverse tcp:8081 tcp:8081 && ANDROID_SERIAL=emulator-5554 ./gradlew installTvGoogleDebug -PREACT_NATIVE_PACKAGER_ROOT=localhost:8081",
         ],
       },
+      {
+        name: "Build release",
+        commands: [
+          "cd ${HOME}/projects/applicaster/androidtv/QuickBrick",
+          "rm ./android/main.hbc; rm ../zapp-platform-android/app/build/outputs/apk/tvGoogle/release/app-tv-google-release.apk; rm ../zapp-platform-android/app/build/outputs/apk/tvGoogle/debug/app-tv-google-debug.apk",
+          "yarn build:ts && yarn build:android_tv && yarn build:hermes:android",
+          "cp ./android/main.hbc ../zapp-platform-android/app/src/tvGoogle/assets",
+          "cd ~/projects/applicaster/androidtv/zapp-platform-android",
+          "./gradlew assembleRelease",
+          "adb connect 192.168.2.213 && adb -s 192.168.2.213:5555 install ./app/build/outputs/apk/tvGoogle/release/app-tv-google-release.apk",
+        ],
+      },
     ],
   },
   {
