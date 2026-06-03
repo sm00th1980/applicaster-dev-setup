@@ -109,14 +109,14 @@ export const v14 = [
         ],
       },
       {
-        name: "Deploy",
+        name: "Deploy to emulator",
         commands: [
           "cd ${HOME}/projects/applicaster/androidtv/zapp-platform-android",
           "adb -s emulator-5554 reverse tcp:8081 tcp:8081 && ANDROID_SERIAL=emulator-5554 ./gradlew installTvGoogleDebug -PREACT_NATIVE_PACKAGER_ROOT=localhost:8081",
         ],
       },
       {
-        name: "Build release",
+        name: "Build release and deploy to device",
         commands: [
           "cd ${HOME}/projects/applicaster/androidtv/QuickBrick",
           "rm -f ./android/main.hbc",
@@ -127,7 +127,7 @@ export const v14 = [
           "cd ${HOME}/projects/applicaster/androidtv/zapp-platform-android",
           '/bin/bash -c "$(curl -fsSL https://applicaster-dev-setup.vercel.app/setup/androidtv/patch-release-signing-debug.sh)"',
           "./gradlew assembleRelease",
-          "adb connect 192.168.2.213 && adb -s 192.168.2.213:5555 install ./app/build/outputs/apk/tvGoogle/release/app-tv-google-release.apk",
+          "adb connect 192.168.2.213 && adb -s 192.168.2.213:5555 install -r ./app/build/outputs/apk/tvGoogle/release/app-tv-google-release.apk",
         ],
       },
     ],
