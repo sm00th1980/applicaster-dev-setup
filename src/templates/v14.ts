@@ -126,7 +126,7 @@ export const v14 = [
           "cd ${HOME}/projects/applicaster/androidtv/zapp-platform-android",
           '/bin/bash -c "$(curl -fsSL https://applicaster-dev-setup.vercel.app/setup/androidtv/patch-release-signing-debug.sh)"',
           "./gradlew assembleRelease",
-          "adb connect 192.168.2.213 && adb -s 192.168.2.213:5555 install -r ./app/build/outputs/apk/tvGoogle/release/app-tv-google-release.apk",
+          "adb disconnect 192.168.2.213 && adb connect 192.168.2.213 && adb -s 192.168.2.213:5555 install -r ./app/build/outputs/apk/tvGoogle/release/app-tv-google-release.apk",
         ],
       },
     ],
