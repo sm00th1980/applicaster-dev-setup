@@ -156,10 +156,24 @@ export const v14 = [
         ],
       },
       {
-        name: "Deploy",
+        name: "Deploy to emulator",
         commands: [
           "cd ${HOME}/projects/applicaster/firetv/zapp-platform-android",
-          "adb reverse tcp:8081 tcp:8081 && ./gradlew installTvAmazonDebug -PREACT_NATIVE_PACKAGER_ROOT=localhost:8081",
+          "adb -s emulator-5554 reverse tcp:8081 tcp:8081 && ANDROID_SERIAL=emulator-5554 ./gradlew installTvAmazonDebug -PREACT_NATIVE_PACKAGER_ROOT=localhost:8081",
+        ],
+      },
+      {
+        name: "Build release and deploy to device",
+        commands: [
+          "cd ${HOME}/projects/applicaster/firetv/QuickBrick",
+          "rm -f ./android/main.hbc",
+          "rm -f ../zapp-platform-android/app/build/outputs/apk/tvAmazon/release/app-tv-amazon-release.apk",
+          "yarn build:ts && yarn build:android_tv && yarn build:hermes:android",
+          "cp ./android/main.hbc ../zapp-platform-android/app/src/tvAmazon/assets",
+          "cd ${HOME}/projects/applicaster/androidtv/zapp-platform-android",
+          '/bin/bash -c "$(curl -fsSL https://applicaster-dev-setup.vercel.app/setup/androidtv/patch-release-signing-debug.sh)"',
+          "./gradlew assembleRelease",
+          "adb disconnect 192.168.2.213 2>/dev/null || true && adb connect 192.168.2.213 && adb -s 192.168.2.213:5555 install -r ./app/build/outputs/apk/tvGoogle/release/app-tv-amazon-release.apk",
         ],
       },
     ],
