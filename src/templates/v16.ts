@@ -128,7 +128,7 @@ export const v16 = [
           "cd ${HOME}/projects/applicaster/androidtv/QuickBrick",
           "rm -f ./android/main.hbc",
           "rm -f ../zapp-platform-android/app/build/outputs/apk/tvGoogle/release/app-tv-google-release.apk",
-          "yarn build:ts && yarn build:android_tv && yarn build:hermes:android",
+          "yarn build:ts && yarn build:android && yarn build:hermes:android",
           "cp ./android/main.hbc ../zapp-platform-android/app/src/tvGoogle/assets",
           "cd ${HOME}/projects/applicaster/androidtv/zapp-platform-android",
           '/bin/bash -c "$(curl -fsSL https://applicaster-dev-setup.vercel.app/setup/androidtv/patch-release-signing-debug.sh)"',
