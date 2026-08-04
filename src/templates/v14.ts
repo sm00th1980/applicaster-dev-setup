@@ -18,8 +18,7 @@ export const v14 = [
         commands: [
           "cd ${HOME}/projects/applicaster/ios/ZappAppleBuilder/ZappiOS/",
           "git reset --hard HEAD && git clean -xfd",
-          "git checkout release-10.0.0",
-          "git pull",
+          "git checkout 10.0.1",
           "rvm use 3.4.1 && zapptool -vi <APP_ID> -rn localhost:8081 -pu",
         ],
       },
@@ -44,8 +43,7 @@ export const v14 = [
         commands: [
           "cd ${HOME}/projects/applicaster/android/zapp-platform-android",
           "git reset --hard HEAD && git clean -xfd",
-          "git checkout master",
-          "git pull",
+          "git checkout 14.1.3",
           "rvm use 2.7.8-perf && bundle update --bundler && bundle exec rake prepare_workspace VERSION=<APP_ID>",
         ],
       },
@@ -84,8 +82,7 @@ export const v14 = [
         commands: [
           "cd ${HOME}/projects/applicaster/tvos/ZappAppleBuilder/ZappTvOS/",
           "git reset --hard HEAD && git clean -xfd",
-          "git checkout release-10.0.0",
-          "git pull",
+          "git checkout 10.0.1",
           "rvm use 3.4.1 && zapptool -vi <APP_ID> -rn localhost:8081 -pu",
         ],
       },
@@ -110,8 +107,7 @@ export const v14 = [
         commands: [
           "cd ${HOME}/projects/applicaster/androidtv/zapp-platform-android",
           "git reset --hard HEAD && git clean -xfd",
-          "git checkout master",
-          "git pull",
+          "git checkout 14.1.3",
           "rvm use 2.7.8-perf && bundle update --bundler && bundle exec rake prepare_workspace VERSION=<APP_ID>",
         ],
       },
@@ -157,8 +153,7 @@ export const v14 = [
         commands: [
           "cd ${HOME}/projects/applicaster/firetv/zapp-platform-android",
           "git reset --hard HEAD && git clean -xfd",
-          "git checkout master",
-          "git pull",
+          "git checkout 14.1.3",
           "rvm use 2.7.8-perf && bundle update --bundler && bundle exec rake prepare_workspace VERSION=<APP_ID>",
         ],
       },
