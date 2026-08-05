@@ -183,7 +183,7 @@ export const v15 = [
         name: "TS && Build",
         commands: [
           "cd ${HOME}/projects/applicaster/samsung/QuickBrick",
-          'NODE_OPTIONS="--openssl-legacy-provider --use-openssl-ca" yarn build:ts && yarn build:web',
+          'yarn build:ts && NODE_OPTIONS="--openssl-legacy-provider --use-openssl-ca" yarn build:web',
         ],
       },
     ],
@@ -199,6 +199,13 @@ export const v15 = [
           "git reset --hard HEAD && git clean -xfd",
           "yarn && yarn zapplicaster prepare -a <APP_ID>",
           "yarn start:web",
+        ],
+      },
+      {
+        name: "TS && Build",
+        commands: [
+          "cd ${HOME}/projects/applicaster/lg/QuickBrick",
+          'yarn build:ts && NODE_OPTIONS="--openssl-legacy-provider --use-openssl-ca" yarn build:web',
         ],
       },
     ],
