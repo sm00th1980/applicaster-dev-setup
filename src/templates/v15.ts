@@ -180,7 +180,7 @@ export const v15 = [
         ],
       },
       {
-        name: "TS && Build",
+        name: "TS and build",
         commands: [
           "cd ${HOME}/projects/applicaster/samsung/QuickBrick",
           'yarn build:ts && NODE_OPTIONS="--openssl-legacy-provider --use-openssl-ca" yarn build:web',
@@ -202,7 +202,7 @@ export const v15 = [
         ],
       },
       {
-        name: "TS && Build",
+        name: "TS and build",
         commands: [
           "cd ${HOME}/projects/applicaster/lg/QuickBrick",
           'yarn build:ts && NODE_OPTIONS="--openssl-legacy-provider --use-openssl-ca" yarn build:web',

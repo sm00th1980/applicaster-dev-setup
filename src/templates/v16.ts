@@ -185,6 +185,13 @@ export const v16 = [
           "yarn start",
         ],
       },
+      {
+        name: "TS and build",
+        commands: [
+          "cd ${HOME}/projects/applicaster/samsung/QuickBrick",
+          "yarn build:ts && yarn build:web",
+        ],
+      },
     ],
   },
   {
@@ -198,6 +205,13 @@ export const v16 = [
           "git reset --hard HEAD && git clean -xfd",
           "yarn && yarn zapplicaster prepare -a <APP_ID>",
           "yarn start",
+        ],
+      },
+      {
+        name: "TS and build",
+        commands: [
+          "cd ${HOME}/projects/applicaster/lg/QuickBrick",
+          "yarn build:ts && yarn build:web",
         ],
       },
     ],
