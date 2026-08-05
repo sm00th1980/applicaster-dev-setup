@@ -179,6 +179,13 @@ export const v15 = [
           "yarn start:web",
         ],
       },
+      {
+        name: "TS && Build",
+        commands: [
+          "cd ${HOME}/projects/applicaster/samsung/QuickBrick",
+          "yarn build:ts && yarn build:web",
+        ],
+      },
     ],
   },
   {
