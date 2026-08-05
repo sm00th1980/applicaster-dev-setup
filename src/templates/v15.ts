@@ -51,7 +51,7 @@ export const v15 = [
         name: "Deploy to emulator",
         commands: [
           "cd ${HOME}/projects/applicaster/android/zapp-platform-android",
-          "adb reverse tcp:8081 tcp:8081 && ./gradlew installMobileGoogleDebug -PREACT_NATIVE_PACKAGER_ROOT=localhost:8081",
+          "adb -s emulator-5554 reverse tcp:8081 tcp:8081 && ANDROID_SERIAL=emulator-5554 ./gradlew installMobileGoogleDebug -PREACT_NATIVE_PACKAGER_ROOT=localhost:8081",
         ],
       },
       {
