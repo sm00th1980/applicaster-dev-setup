@@ -192,6 +192,13 @@ export const v16 = [
           "yarn build:ts && yarn build:web",
         ],
       },
+      {
+        name: "Install on device",
+        commands: [
+          "sdb disconnect 192.168.88.108 && sdb connect 192.168.88.108",
+          "tizen install -t UE43AU7100UXCE --name ./com.apptheapp_14.0.12-build.9-debug.wgt",
+        ],
+      },
     ],
   },
   {
