@@ -196,6 +196,9 @@ export const v16 = [
         name: "Install on device",
         commands: [
           "sdb disconnect 192.168.88.108 && sdb connect 192.168.88.108",
+          "tizen package --type wgt --output ./ --sign Ruslan4 -- ./source",
+          "mv The\ App.wgt com.apptheapp_14.0.12-build.9-debug.wgt",
+          "tizen package --type wgt --sign Ruslan4 -- ./com.apptheapp_14.0.12-build.9-debug.wgt",
           "tizen install -t UE43AU7100UXCE --name ./com.watchnow.yestv_4.0.10-build.44-debug.wgt",
         ],
       },
