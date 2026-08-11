@@ -27,6 +27,19 @@ const PLATFORM_ORDER = [
   "lg",
 ];
 
+const PLATFORM_LABELS: Record<string, string> = {
+  ios: "iOS",
+  android: "Android",
+  tvos: "tvOS",
+  androidtv: "Android TV",
+  firetv: "Fire TV",
+  samsung: "Samsung(Tizen)",
+  lg: "LG(webOS)",
+};
+
+const getPlatformLabel = (platformId: string) =>
+  PLATFORM_LABELS[platformId] ?? platformId;
+
 const isLast = (index: number, length: number) => index + 1 >= length;
 
 function App() {
@@ -198,7 +211,7 @@ function App() {
             >
               {PLATFORM_ORDER.map((platformId) => (
                 <option value={platformId} key={platformId}>
-                  {platformId}
+                  {getPlatformLabel(platformId)}
                 </option>
               ))}
             </Form.Select>
