@@ -54,6 +54,7 @@ export const v16 = [
         commands: [
           "cd ${HOME}/projects/applicaster/android/zapp-platform-android",
           "adb -s emulator-5554 reverse tcp:8081 tcp:8081 && ANDROID_SERIAL=emulator-5554 ./gradlew installMobileGoogleDebug -PREACT_NATIVE_PACKAGER_ROOT=localhost:8081",
+          'DEVICE=$(adb devices | awk \'NR>1 && $1 ~ /^emulator-/ && $2 == "device" {print $1; exit}\') && adb -s "$DEVICE" reverse tcp:8081 tcp:8081 && ANDROID_SERIAL="$DEVICE" ./gradlew installMobileGoogleDebug -PREACT_NATIVE_PACKAGER_ROOT=localhost:8081',
         ],
       },
       {
