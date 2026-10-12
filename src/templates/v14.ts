@@ -115,7 +115,7 @@ export const v14 = [
         name: "Deploy to emulator",
         commands: [
           "cd ${HOME}/projects/applicaster/androidtv/zapp-platform-android",
-          "adb -s emulator-5556 reverse tcp:8081 tcp:8081 && ANDROID_SERIAL=emulator-5556 ./gradlew installTvGoogleDebug -PREACT_NATIVE_PACKAGER_ROOT=localhost:8081",
+          'DEVICE=$(adb devices | awk \'NR>1 && $1 ~ /^emulator-/ && $2 == "device" {print $1; exit}\') && adb -s "$DEVICE" reverse tcp:8081 tcp:8081 && ANDROID_SERIAL="$DEVICE" ./gradlew installTvGoogleDebug -PREACT_NATIVE_PACKAGER_ROOT=localhost:8081',
         ],
       },
       {
@@ -161,7 +161,7 @@ export const v14 = [
         name: "Deploy to emulator",
         commands: [
           "cd ${HOME}/projects/applicaster/firetv/zapp-platform-android",
-          "adb -s emulator-5556 reverse tcp:8081 tcp:8081 && ANDROID_SERIAL=emulator-5556 ./gradlew installTvAmazonDebug -PREACT_NATIVE_PACKAGER_ROOT=localhost:8081",
+          'DEVICE=$(adb devices | awk \'NR>1 && $1 ~ /^emulator-/ && $2 == "device" {print $1; exit}\') && adb -s "$DEVICE" reverse tcp:8081 tcp:8081 && ANDROID_SERIAL="$DEVICE" ./gradlew installTvAmazonDebug -PREACT_NATIVE_PACKAGER_ROOT=localhost:8081',
         ],
       },
       {
