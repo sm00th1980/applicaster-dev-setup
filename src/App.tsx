@@ -14,6 +14,7 @@ import {
   type PlatformTemplate,
   type QuickBrickVersion,
 } from "./templates";
+import { explainCommand } from "./explainCommand";
 
 const uuidSchema = z.string().uuid();
 
@@ -280,39 +281,45 @@ function App() {
                 <Card.Body>
                   <div key={groupIndex} className="">
                     {group.commands.map((command, lineIndex) => (
-                      <InputGroup
+                      <Form.Group
+                        key={lineIndex}
+                        controlId={`${chosenTemplate.id}-${groupIndex}-${lineIndex}`}
                         className={
                           isLast(lineIndex, group.commands.length) ? "" : "mb-3"
                         }
-                        key={lineIndex}
                       >
-                        <Form.Control readOnly value={command} />
-                        {isCopied(
-                          "line",
-                          chosenTemplate.id,
-                          groupIndex,
-                          lineIndex,
-                        ) ? (
-                          <Button variant="outline-success" size="sm">
-                            Copied!
-                          </Button>
-                        ) : (
-                          <Button
-                            variant="outline-success"
-                            size="sm"
-                            onClick={() =>
-                              handleCopyLine(
-                                chosenTemplate.id,
-                                command,
-                                lineIndex,
-                                groupIndex,
-                              )
-                            }
-                          >
-                            Copy
-                          </Button>
-                        )}
-                      </InputGroup>
+                        <Form.Label className="mb-1">
+                          {explainCommand(command)}
+                        </Form.Label>
+                        <InputGroup>
+                          <Form.Control readOnly value={command} />
+                          {isCopied(
+                            "line",
+                            chosenTemplate.id,
+                            groupIndex,
+                            lineIndex,
+                          ) ? (
+                            <Button variant="outline-success" size="sm">
+                              Copied!
+                            </Button>
+                          ) : (
+                            <Button
+                              variant="outline-success"
+                              size="sm"
+                              onClick={() =>
+                                handleCopyLine(
+                                  chosenTemplate.id,
+                                  command,
+                                  lineIndex,
+                                  groupIndex,
+                                )
+                              }
+                            >
+                              Copy
+                            </Button>
+                          )}
+                        </InputGroup>
+                      </Form.Group>
                     ))}
                   </div>
                 </Card.Body>
