@@ -3,3 +3,7 @@ body {
 	min-width: 320px;
 	min-height: 100vh;
 }
+
+.tooltip.command-tip {
+	--bs-tooltip-max-width: 28rem;
+}
