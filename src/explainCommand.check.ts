@@ -2,8 +2,9 @@ import { explainCommand } from "./explainCommand.ts";
 import { v14 } from "./templates/v14.ts";
 import { v15 } from "./templates/v15.ts";
 import { v16 } from "./templates/v16.ts";
+import { v17 } from "./templates/v17.ts";
 
-const commands = [v14, v15, v16].flatMap((platforms) =>
+const commands = [v14, v15, v16, v17].flatMap((platforms) =>
   platforms.flatMap((platform) =>
     platform.groups.flatMap((group) => group.commands),
   ),

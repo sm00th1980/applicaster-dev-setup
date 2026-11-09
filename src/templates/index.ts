@@ -1,6 +1,7 @@
 import { v14 } from "./v14";
 import { v15 } from "./v15";
 import { v16 } from "./v16";
+import { v17 } from "./v17";
 
 export type CommandLine = string;
 
@@ -15,7 +16,7 @@ export type PlatformTemplate = {
   groups: CommandGroup[];
 };
 
-export type QuickBrickVersion = "v15" | "v14" | "v16";
+export type QuickBrickVersion = "v15" | "v14" | "v16" | "v17";
 
 export type PlatformTemplates = Record<QuickBrickVersion, PlatformTemplate[]>;
 
@@ -40,4 +41,5 @@ export const platformTemplates: PlatformTemplates = {
   v15,
   v14,
   v16,
+  v17,
 };

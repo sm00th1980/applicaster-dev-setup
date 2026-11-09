@@ -54,7 +54,7 @@ function App() {
   );
 
   const [selectedVersion, setSelectedVersion] =
-    useState<QuickBrickVersion>("v16");
+    useState<QuickBrickVersion>("v17");
   const [generatedTemplates, setGeneratedTemplates] = useState<
     PlatformTemplate[]
   >([]);
@@ -229,8 +229,11 @@ function App() {
                 setSelectedVersion(e.target.value as QuickBrickVersion)
               }
             >
+              <option value="v17" key="v17">
+                v17 (current main branch)
+              </option>
               <option value="v16" key="v16">
-                v16 (current main branch)
+                v16
               </option>
               <option value="v15" key="v15">
                 v15.1 (based on v14)
