@@ -38,7 +38,7 @@ export function explainCommand(command: string): string {
 
   const tag = command.match(/^git checkout (\S+)$/);
   if (tag) {
-    return `We check out tag ${tag[1]}.`;
+    return `We check out ${tag[1]}.`;
   }
 
   if (command.startsWith("git reset --hard")) {

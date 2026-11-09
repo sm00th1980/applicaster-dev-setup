@@ -8,6 +8,8 @@ export const v16 = [
         commands: [
           "cd ${HOME}/projects/applicaster/ios/QuickBrick",
           "git reset --hard HEAD && git clean -xfd",
+          "git checkout release/version-16",
+          "git pull",
           "yarn && yarn zapplicaster prepare -a <APP_ID>",
           '/bin/bash -c "$(curl -fsSL https://applicaster-dev-setup.vercel.app/setup/ios/v16/setup.sh)"',
           "yarn start",
@@ -34,6 +36,8 @@ export const v16 = [
         commands: [
           "cd ${HOME}/projects/applicaster/android/QuickBrick",
           "git reset --hard HEAD && git clean -xfd",
+          "git checkout release/version-16",
+          "git pull",
           "yarn && yarn zapplicaster prepare -a <APP_ID>",
           '/bin/bash -c "$(curl -fsSL https://applicaster-dev-setup.vercel.app/setup/android/setup.sh)"',
           "yarn start",
@@ -74,6 +78,8 @@ export const v16 = [
         commands: [
           "cd ${HOME}/projects/applicaster/tvos/QuickBrick",
           "git reset --hard HEAD && git clean -xfd",
+          "git checkout release/version-16",
+          "git pull",
           "yarn && yarn add react-native@npm:react-native-tvos@0.77.2-1 && yarn zapplicaster prepare -a -b <APP_ID>",
           '/bin/bash -c "$(curl -fsSL https://applicaster-dev-setup.vercel.app/setup/tvos/v16/setup.sh)"',
           "yarn start",
@@ -100,6 +106,8 @@ export const v16 = [
         commands: [
           "cd ${HOME}/projects/applicaster/androidtv/QuickBrick",
           "git reset --hard HEAD && git clean -xfd",
+          "git checkout release/version-16",
+          "git pull",
           "yarn && yarn zapplicaster prepare -a <APP_ID>",
           '/bin/bash -c "$(curl -fsSL https://applicaster-dev-setup.vercel.app/setup/androidtv/setup.sh)"',
           "yarn start",
@@ -148,6 +156,8 @@ export const v16 = [
         commands: [
           "cd ${HOME}/projects/applicaster/firetv/QuickBrick",
           "git reset --hard HEAD && git clean -xfd",
+          "git checkout release/version-16",
+          "git pull",
           "yarn && yarn zapplicaster prepare -a <APP_ID>",
           '/bin/bash -c "$(curl -fsSL https://applicaster-dev-setup.vercel.app/setup/androidtv/setup.sh)"',
           "yarn start",
@@ -195,6 +205,8 @@ export const v16 = [
         commands: [
           "cd ${HOME}/projects/applicaster/samsung/QuickBrick",
           "git reset --hard HEAD && git clean -xfd",
+          "git checkout release/version-16",
+          "git pull",
           "yarn && yarn zapplicaster prepare -a <APP_ID>",
           "yarn start",
         ],
@@ -227,6 +239,8 @@ export const v16 = [
         commands: [
           "cd ${HOME}/projects/applicaster/lg/QuickBrick",
           "git reset --hard HEAD && git clean -xfd",
+          "git checkout release/version-16",
+          "git pull",
           "yarn && yarn zapplicaster prepare -a <APP_ID>",
           "yarn start",
         ],
