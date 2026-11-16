@@ -80,6 +80,7 @@ export const v16 = [
           "git reset --hard HEAD && git clean -xfd",
           "git checkout release/version-16",
           "git pull",
+          "nvm use 20",
           "yarn && yarn add react-native@npm:react-native-tvos@0.77.2-1 && yarn zapplicaster prepare -a -b <APP_ID>",
           '/bin/bash -c "$(curl -fsSL https://applicaster-dev-setup.vercel.app/setup/tvos/v16/setup.sh)"',
           "yarn start",

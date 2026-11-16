@@ -74,6 +74,7 @@ export const v17 = [
         commands: [
           "cd ${HOME}/projects/applicaster/tvos/QuickBrick",
           "git reset --hard HEAD && git clean -xfd",
+          "nvm use 24",
           "yarn && yarn add react-native@npm:react-native-tvos@0.77.2-1 && yarn zapplicaster prepare -a -b <APP_ID>",
           '/bin/bash -c "$(curl -fsSL https://applicaster-dev-setup.vercel.app/setup/tvos/v17/setup.sh)"',
           "yarn start",

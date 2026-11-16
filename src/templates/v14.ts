@@ -43,7 +43,7 @@ export const v14 = [
         commands: [
           "cd ${HOME}/projects/applicaster/android/zapp-platform-android",
           "git reset --hard HEAD && git clean -xfd",
-          "git checkout \"$(git tag --sort=-creatordate | head -n 1)\"",
+          'git checkout "$(git tag --sort=-creatordate | head -n 1)"',
           "rvm use 2.7.8-perf && bundle update --bundler && bundle exec rake prepare_workspace VERSION=<APP_ID>",
         ],
       },
@@ -72,6 +72,7 @@ export const v14 = [
         commands: [
           "cd ${HOME}/projects/applicaster/tvos/QuickBrick",
           "git reset --hard HEAD && git clean -xfd",
+          "nvm use 20",
           "yarn && yarn add react-native@npm:react-native-tvos@0.77.2-1 && yarn zapplicaster prepare -a -b <APP_ID>",
           '/bin/bash -c "$(curl -fsSL https://applicaster-dev-setup.vercel.app/setup/tvos/v14/setup.sh)"',
           "yarn start",
@@ -107,7 +108,7 @@ export const v14 = [
         commands: [
           "cd ${HOME}/projects/applicaster/androidtv/zapp-platform-android",
           "git reset --hard HEAD && git clean -xfd",
-          "git checkout \"$(git tag --sort=-creatordate | head -n 1)\"",
+          'git checkout "$(git tag --sort=-creatordate | head -n 1)"',
           "rvm use 2.7.8-perf && bundle update --bundler && bundle exec rake prepare_workspace VERSION=<APP_ID>",
         ],
       },
@@ -153,7 +154,7 @@ export const v14 = [
         commands: [
           "cd ${HOME}/projects/applicaster/firetv/zapp-platform-android",
           "git reset --hard HEAD && git clean -xfd",
-          "git checkout \"$(git tag --sort=-creatordate | head -n 1)\"",
+          'git checkout "$(git tag --sort=-creatordate | head -n 1)"',
           "rvm use 2.7.8-perf && bundle update --bundler && bundle exec rake prepare_workspace VERSION=<APP_ID>",
         ],
       },
