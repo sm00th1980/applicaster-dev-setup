@@ -98,6 +98,7 @@ export const v14 = [
         commands: [
           "cd ${HOME}/projects/applicaster/androidtv/QuickBrick",
           "git reset --hard HEAD && git clean -xfd",
+          "nvm use 20",
           "yarn && yarn zapplicaster prepare -a <APP_ID>",
           '/bin/bash -c "$(curl -fsSL https://applicaster-dev-setup.vercel.app/setup/androidtv/setup.sh)"',
           "yarn start",
@@ -144,6 +145,7 @@ export const v14 = [
         commands: [
           "cd ${HOME}/projects/applicaster/firetv/QuickBrick",
           "git reset --hard HEAD && git clean -xfd",
+          "nvm use 20",
           "yarn && yarn zapplicaster prepare -a <APP_ID>",
           '/bin/bash -c "$(curl -fsSL https://applicaster-dev-setup.vercel.app/setup/androidtv/setup.sh)"',
           "yarn start",
