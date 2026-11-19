@@ -8,6 +8,7 @@ export const v17 = [
         commands: [
           "cd ${HOME}/projects/applicaster/ios/QuickBrick",
           "git reset --hard HEAD && git clean -xfd",
+          "nvm use 24",
           "yarn && yarn zapplicaster prepare -a <APP_ID>",
           '/bin/bash -c "$(curl -fsSL https://applicaster-dev-setup.vercel.app/setup/ios/v17/setup.sh)"',
           "yarn start",
@@ -34,6 +35,7 @@ export const v17 = [
         commands: [
           "cd ${HOME}/projects/applicaster/android/QuickBrick",
           "git reset --hard HEAD && git clean -xfd",
+          "nvm use 24",
           "yarn && yarn zapplicaster prepare -a <APP_ID>",
           '/bin/bash -c "$(curl -fsSL https://applicaster-dev-setup.vercel.app/setup/android/setup.sh)"',
           "yarn start",
