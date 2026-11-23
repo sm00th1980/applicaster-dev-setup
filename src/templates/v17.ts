@@ -89,6 +89,7 @@ export const v17 = [
           "git reset --hard HEAD && git clean -xfd",
           "git checkout master",
           "git pull",
+          "nvm use 24",
           "rvm use 3.4.1 && zapptool -vi <APP_ID> -rn localhost:8081 -pu",
         ],
       },
