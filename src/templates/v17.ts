@@ -200,6 +200,7 @@ export const v17 = [
         commands: [
           "cd ${HOME}/projects/applicaster/samsung/QuickBrick",
           "git reset --hard HEAD && git clean -xfd",
+          "nvm use 24",
           "yarn && yarn zapplicaster prepare -a <APP_ID>",
           "yarn start",
         ],
@@ -232,6 +233,7 @@ export const v17 = [
         commands: [
           "cd ${HOME}/projects/applicaster/lg/QuickBrick",
           "git reset --hard HEAD && git clean -xfd",
+          "nvm use 24",
           "yarn && yarn zapplicaster prepare -a <APP_ID>",
           "yarn start",
         ],
